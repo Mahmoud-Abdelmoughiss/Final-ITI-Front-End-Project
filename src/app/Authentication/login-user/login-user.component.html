@@ -1,0 +1,83 @@
+<section class="vh-100" style="background-color: white;">
+  <div></div>
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-6  mt-5">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-3">
+              <div class="row justify-content-center">
+                <div class="col-12  order-2 order-lg-1">
+                 
+                  
+                 
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"> User Login </p>
+  
+                  <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Sucsess!</strong> You Login  Sucsessfully.
+                    <button  (click)="closeAlert()"  type="button" class="btn-close" 
+                    data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                  <form  [formGroup]="loginForm" class="mx-1 mx-md-4" (ngSubmit)="login()">
+  
+                    <div class="d-flex flex-row align-items-center mb-2">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Your Email</label>
+                        <input type="email" id="form3Example3c" [class.is-invalid]=" loginForm.get('email')?.invalid&&loginForm.
+                          get('email')?.touched"  [(ngModel)]="userlogin.email" formControlName="email"
+                          class="form-control" placeholder="Enter Your Email" />
+                        <div *ngIf="loginForm.get('email')?.invalid&&loginForm.
+                          get('email')?.touched">
+                          <small class="text-danger" *ngIf="loginForm.
+                              get('email')?.errors?.['required']">Email is Required </small>
+  
+                          <small class="text-danger" *ngIf="loginForm.
+                                 get('email')?.errors?.['pattern']">Email Must be in pattern </small>
+                        </div>
+  
+                      </div>
+                    </div>
+  
+  
+                    
+  
+  
+  
+                    <div class="d-flex flex-row align-items-center mb-2">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+  
+                        <div class="mb-2">
+                          <label for="pwd" class="form-label">Password</label>
+                          <input formControlName="password" type="password"  [class.is-invalid]="
+                          loginForm.get('password')?.touched&&
+                          loginForm.get('password')?.invalid" [(ngModel)]="userlogin.password"
+                            class="form-control" id="pwd" placeholder="Enter password">
+                        
+  
+                            <div *ngIf="loginForm.get('password')?.invalid&&loginForm.
+                            get('password')?.touched">
+                            <small class="text-danger" *ngIf="loginForm.
+                                get('password')?.errors?.['required']">password is Required </small>
+    
+                    </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class=" mb-3 ">
+                      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-primary form-control">Login</button>
+                    
+                    </div>
+  
+                  </form>
+                    
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
